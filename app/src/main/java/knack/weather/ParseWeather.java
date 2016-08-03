@@ -374,9 +374,6 @@ public class ParseWeather
                 case "Sun":
                     day = "Воскресенье";
                     break;
-                default:
-                    day = "Ошибка";
-                    break;
             }
 
             return day;
