@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Салатовая тема-->
+    <style name="SalatTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary"              >@color/bright_green</item>
+        <item name="colorPrimaryDark"          >@color/green</item>
+        <item name="colorAccent"               >@color/deep_blue</item>
+        <item name="android:navigationBarColor">@color/green</item>
+    </style>
+
+    <!-- Морская тема-->
+    <style name="SeaTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary"              >@color/bright_cyan</item>
+        <item name="colorPrimaryDark"          >@color/cyan</item>
+        <item name="colorAccent"               >@color/dark_purple</item>
+        <item name="android:navigationBarColor">@color/cyan</item>
+    </style>
+
+    <!-- Фиолетовая тема-->
+    <style name="PurpleTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary"              >@color/bright_purple</item>
+        <item name="colorPrimaryDark"          >@color/purple</item>
+        <item name="colorAccent"               >@color/bright_pink</item>
+        <item name="android:navigationBarColor">@color/purple</item>
+    </style>
+
+    <!-- Оранжевая тема-->
+    <style name="OrangeTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary"              >@color/bright_orange</item>
+        <item name="colorPrimaryDark"          >@color/orange</item>
+        <item name="colorAccent"               >@color/blue_gray</item>
+        <item name="android:navigationBarColor">@color/orange</item>
+    </style>
+
+    <style name="StyleForContentText">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+</resources>

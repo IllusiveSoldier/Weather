@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Weather</string>
+
+    <string name="widgettext.getWeather">get my weather</string>
+    <string name="widgettext.getWeatherOnTenDays">get weather on another days</string>
+
+    <string name="hint.your_weather">your weather</string>
+    <string name="hint.yourCity">Твой город:</string>
+
+    <string name="hint.country">Страна</string>
+    <string name="hint.region">Регион</string>
+    <string name="hint.city">Город</string>
+
+    <string name="hint.tempOfWind">Температура ветра</string>
+    <string name="hint.directionOfwind">Напраление ветра</string>
+    <string name="hint.speedOfWind">Скорость ветра</string>
+
+    <string name="hint.humidity">Влажность</string>
+    <string name="hint.pressure">Давление</string>
+    <string name="hint.visibility">Видимость</string>
+
+    <string name="hint.infoAboutWeather">Тут будет информация о погоде</string>
+
+    <string name="label.currentWeather">Weather - текущая погода</string>
+</resources>
