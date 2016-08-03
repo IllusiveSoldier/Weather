@@ -3,7 +3,6 @@ package knack.weather;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +33,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     RecyclerViewAdapter(ParseWeather.Forecast[] f)
     {
-        Log.d(TAG, "forecasts в конструкторе RV: " + f[1].getText());
         this.forecasts = f;
     }
 
@@ -56,14 +54,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(WeatherViewHolder weatherViewHolder, int i)
     {
         weatherViewHolder.WeatherInDay.setText("Дата: " + forecasts[i].getDate() + "\n" +
-                                              "День: " + forecasts[i].getDay() + "\n" +
-                                              "Макс.температура(\u2103): " + String.format(
+                                               "День: " + forecasts[i].getDay() + "\n" +
+                                               "Макс.температура(\u2103): " + String.format(
                                                                                     Locale.ENGLISH,
                                                 "%.1f", forecasts[i].getHighInCelsius()) + "\n" +
-                                              "Мин. температура(\u2103): " + String.format(
+                                               "Мин. температура(\u2103): " + String.format(
                                                                                     Locale.ENGLISH,
-                                              "%.1f", forecasts[i].getLowInCelsius()) + "\n" +
-                                              "Состояние: " + forecasts[i].getText());
+                                               "%.1f", forecasts[i].getLowInCelsius()) + "\n" +
+                                               "Состояние: " + forecasts[i].getText());
     }
 
     @Override

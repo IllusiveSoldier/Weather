@@ -5,7 +5,6 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -77,7 +76,6 @@ public class WeatherActivity extends AppCompatActivity
             {
                 String city = CityEditText.getText().toString();
                 String yourUri = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + city + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-                Log.d(TAG, "City: " + city);
                 if (!(city.equalsIgnoreCase("")))
                 {
                     try
@@ -145,7 +143,6 @@ public class WeatherActivity extends AppCompatActivity
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
-        Log.d(TAG, "Вызов onSaveInstanceState");
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putString(jsonKey, readyString);
         savedInstanceState.putString(imageKey, uriImage);
@@ -154,7 +151,6 @@ public class WeatherActivity extends AppCompatActivity
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Log.d(TAG, "Вызов onRestoreInstanceState");
 
         if (savedInstanceState != null)
         {
@@ -199,24 +195,19 @@ public class WeatherActivity extends AppCompatActivity
         {
             // Перед началом выполенения вырубаем кнопку
             getMyWeatherButton.setEnabled(false);
-            Log.d(TAG, "Кнопка ПЕРЕД AsyncTask: " + Boolean.toString(getMyWeatherButton.isEnabled()));
         }
 
         @Override
         protected String doInBackground(String... urls)
         {
-            // TODO Auto-generated method stub
-            // Call your web service here
             try
             {
                 GetExample example = new GetExample();
                 myJsonString = example.run(urls[0]);
-                Log.d(TAG, "Запрос УСПЕШНО прошёл");
             }
             catch (IOException e)
             {
                 myJsonString = "Error";
-                Log.d(TAG, "Запрос НЕ прошёл");
             }
             return myJsonString;
         }
@@ -224,92 +215,56 @@ public class WeatherActivity extends AppCompatActivity
         @Override
         protected void onPostExecute(String result)
         {
-            // TODO Auto-generated method stub
-            // Update your UI here
-            //TextView.setText(result);
             // После выполнения - включаем
             getMyWeatherButton.setEnabled(true);
-            Log.d("TAG", "Кнопка ПОСЛЕ AsyncTask: " + Boolean.toString(getMyWeatherButton.isEnabled()));
-            Log.d("TAG", result);
-
             BindOfValues(result);
         }
 
         private void BindOfValues(String values)
         {
-            Log.d(TAG, "values: " + values);
             ParseWeather parseWeather = new ParseWeather(values);
             parseWeather.Parse();
 
-            readyString =
-                    "Страна: " + parseWeather.location.GetCountry() + "\n" +
-                    "Район: " + parseWeather.location.GetRegion() + "\n" +
-                    "Город: " + parseWeather.location.GetCity() + "\n" +
-                    "Температура ветра(\u2103): " + String.format(Locale.ENGLISH, "%.1f",
-                                                                                     parseWeather
-                                                                                     .wind
-                                                                    .GetChillInCelsius()) + "\n" +
-                    "Направление ветра: " +
-                    parseWeather.wind.GetDirectionOfWind(parseWeather.wind.getDirection()) + "\n" +
-                    "Скорость ветра(м/с): " +
-                    String.format(Locale.ENGLISH, "%.1f", parseWeather
-                                                            .wind
-                                                            .GetSpeedInMetersInSecond()) + "\n" +
-                    "Влажность(%): " +
-                    Integer.toString(parseWeather.atmosphere.GetHumidity()) + "\n" +
-                    "Давление(mmHg): " +
-                    Double.toString((int)parseWeather.atmosphere.GetPressureInMm()) + "\n" +
-                    "Видимость(км): " +
-                    Double.toString((int)parseWeather.atmosphere.GetVisibilityInKilometers());
+            if (parseWeather.isCheck())
+            {
+                readyString =
+                        "Страна: " + parseWeather.location.GetCountry() + "\n" +
+                                "Район: " + parseWeather.location.GetRegion() + "\n" +
+                                "Город: " + parseWeather.location.GetCity() + "\n" +
+                                "Температура ветра(\u2103): " + String.format(Locale.ENGLISH, "%.1f",
+                                parseWeather
+                                        .wind
+                                        .GetChillInCelsius()) + "\n" +
+                                "Направление ветра: " +
+                                parseWeather.wind.GetDirectionOfWind(parseWeather.wind.getDirection()) + "\n" +
+                                "Скорость ветра(м/с): " +
+                                String.format(Locale.ENGLISH, "%.1f", parseWeather
+                                        .wind
+                                        .GetSpeedInMetersInSecond()) + "\n" +
+                                "Влажность(%): " +
+                                Integer.toString(parseWeather.atmosphere.GetHumidity()) + "\n" +
+                                "Давление(mmHg): " +
+                                Double.toString((int)parseWeather.atmosphere.GetPressureInMm()) + "\n" +
+                                "Видимость(км): " +
+                                Double.toString((int)parseWeather.atmosphere.GetVisibilityInKilometers());
 
-            uriImage = parseWeather.image.getUrl();
+                uriImage = parseWeather.image.getUrl();
 
-            InfoAboutWeather.setText(readyString);
+                InfoAboutWeather.setText(readyString);
 
-            Picasso.with(getApplicationContext())
-                    .load(uriImage)
-                    .placeholder(R.mipmap.ic_sync_black_24dp)
-                    .error(R.mipmap.ic_cloud_off_black_24dp)
-                    .into(YahooImageView);
+                Picasso.with(getApplicationContext())
+                        .load(uriImage)
+                        .placeholder(R.mipmap.ic_sync_black_24dp)
+                        .error(R.mipmap.ic_cloud_off_black_24dp)
+                        .into(YahooImageView);
 
-            forecasts = parseWeather.forecast.getArrayOfForcasts();
-
-            Log.d(TAG, "forecasts: " + forecasts[1].getText());
+                forecasts = parseWeather.forecast.getArrayOfForcasts();
+            }
+            else
+            {
+                readyString = "Ошибка загрузки погоды для этого места!";
+                InfoAboutWeather.setText(readyString);
+            }
         }
-    }
-
-    @Override
-    public void onStart()
-    {
-        super.onStart();
-        Log.d("TAG", "onStart() called in WeatherActivity");
-    }
-
-    @Override
-    public void onPause()
-    {
-        super.onPause();
-        Log.d(TAG, "onPause() called in WeatherActivity");
-    }
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        Log.d(TAG, "onResume() called in WeatherActivity");
-    }
-
-    @Override
-    public void onStop()
-    {
-        super.onStop();
-        Log.d(TAG, "onStop() called in WeatherActivity");
-    }
-
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy() called in WeatherActivity");
     }
 }

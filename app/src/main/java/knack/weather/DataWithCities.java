@@ -1,7 +1,5 @@
 package knack.weather;
 
-import android.util.Log;
-
 import java.util.Random;
 
 public class DataWithCities
@@ -26,7 +24,6 @@ public class DataWithCities
 
     public int GetSizeOfArrayOfCities()
     {
-        Log.d("TEST", "Размер массива с городами: " + source.length);
         return source.length;
     }
 }

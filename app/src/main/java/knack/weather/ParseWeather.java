@@ -1,7 +1,5 @@
 package knack.weather;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -26,8 +24,19 @@ public class ParseWeather
     public ParseWeather(String _jsonString)
     {
         jsonString = _jsonString;
-        Log.d("TEST", "Экзмемпляр класса ParseWeather создан");
     }
+
+    public boolean isCheck()
+    {
+        return check;
+    }
+
+    public void setCheck(boolean check)
+    {
+        this.check = check;
+    }
+
+    boolean check;
 
     public class Location
     {
@@ -160,7 +169,6 @@ public class ParseWeather
 
         public String GetDirectionOfWind(int direction)
         {
-            Log.d("TEST", "Направление ветра(градусы) в методе с проверкой: " + direction);
             if (direction >= 0 && direction < 15)
             {
                 return "северное";
@@ -197,7 +205,7 @@ public class ParseWeather
             {
                 return "северное";
             }
-            else return "ошибка получения результата";
+            else return "Ошибка";
         }
     }
 
@@ -366,6 +374,9 @@ public class ParseWeather
                 case "Sun":
                     day = "Воскресенье";
                     break;
+                default:
+                    day = "Ошибка";
+                    break;
             }
 
             return day;
@@ -430,7 +441,6 @@ public class ParseWeather
 
             Forecast[] forecasts = gson.fromJson(jsonObjectItem.getJSONArray("forecast").toString(),
                                                                                 Forecast[].class);
-            Log.d("TEST", "forecasts length: " + forecasts.length);
 
             for (Forecast value : forecasts)
             {
@@ -450,11 +460,11 @@ public class ParseWeather
             atmosphere = gson.fromJson(jsonObjectAtmosphere.toString(), Atmosphere.class);
             image = gson.fromJson(jsonObjectImage.toString(), Image.class);
 
-            Log.d("TEST", "Парсинг успешно выполнен");
+            setCheck(true);
         }
         catch (JSONException e)
         {
-            Log.d("TEST", "Парсинг НЕ удался: " + e.getMessage());
+            setCheck(false);
         }
     }
 }
