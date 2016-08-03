@@ -1,9 +1,13 @@
 package knack.weather;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -35,16 +39,19 @@ public class WeatherActivity extends AppCompatActivity
     Button RefreshButton;
     Button GetWeatherOnTenDays;
     EditText CityEditText;
-
     TextView InfoAboutWeather;
-
     ImageView YahooImageView;
+    Snackbar snackbar;
 
     String myJsonString;
     String readyString;
     String uriImage;
+    String bufferCityEditText;
+
+    int apiVersion;
 
     ParseWeather.Forecast[] forecasts;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,6 +66,8 @@ public class WeatherActivity extends AppCompatActivity
         GetWeatherOnTenDays = (Button) findViewById(R.id.GetWeatherOnTenDays);
 
         myJsonString = "";
+        bufferCityEditText = "";
+        apiVersion = Build.VERSION.SDK_INT;
 
         CityEditText.setTypeface(Typeface.createFromAsset(getAssets(),
                     "fonts/Roboto/Roboto-Light.ttf"));
@@ -117,7 +126,29 @@ public class WeatherActivity extends AppCompatActivity
             @Override
             public boolean onLongClick(View view)
             {
+                bufferCityEditText = CityEditText.getText().toString();
                 CityEditText.setText("");
+                snackbar = Snackbar
+                                    .make(view, "Город удалён", Snackbar.LENGTH_LONG)
+                                    .setAction("UNDO", new View.OnClickListener()
+                                    {
+                                        @Override
+                                        public void onClick(View view)
+                                         {
+                                                          CityEditText.setText(bufferCityEditText);
+                                         }
+                                    });
+                if (apiVersion >= 23)
+                {
+                    snackbar.setActionTextColor(ContextCompat.getColor(getApplicationContext(),
+                            R.color.bright_green));
+                }
+                else
+                {
+                    snackbar.setActionTextColor(getResources().getColor(R.color.bright_green));
+                }
+                snackbar.show();
+
                 return true;
             }
         });
