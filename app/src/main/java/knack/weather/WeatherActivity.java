@@ -75,7 +75,10 @@ public class WeatherActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 String city = CityEditText.getText().toString();
-                String yourUri = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + city + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+                String yourUri = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%" +
+                        "20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo." +
+                        "places(1)%20where%20text%3D%22" + city + "%22)&format=json&env=store%3A" +
+                        "%2F%2Fdatatables.org%2Falltableswithkeys";
                 if (!(city.equalsIgnoreCase("")))
                 {
                     try
@@ -228,25 +231,26 @@ public class WeatherActivity extends AppCompatActivity
             if (parseWeather.isCheck())
             {
                 readyString =
-                        "Страна: " + parseWeather.location.GetCountry() + "\n" +
+                                "Страна: " + parseWeather.location.GetCountry() + "\n" +
                                 "Район: " + parseWeather.location.GetRegion() + "\n" +
                                 "Город: " + parseWeather.location.GetCity() + "\n" +
-                                "Температура ветра(\u2103): " + String.format(Locale.ENGLISH, "%.1f",
-                                parseWeather
-                                        .wind
-                                        .GetChillInCelsius()) + "\n" +
-                                "Направление ветра: " +
-                                parseWeather.wind.GetDirectionOfWind(parseWeather.wind.getDirection()) + "\n" +
-                                "Скорость ветра(м/с): " +
-                                String.format(Locale.ENGLISH, "%.1f", parseWeather
-                                        .wind
-                                        .GetSpeedInMetersInSecond()) + "\n" +
+                                "Температура ветра(\u2103): " + String.format(
+                                        "%.1f", parseWeather.wind.GetChillInCelsius()) + "\n" +
+                                "Направление ветра: " + parseWeather
+                                                        .wind
+                                                        .GetDirectionOfWind(parseWeather
+                                                                           .wind
+                                                                           .getDirection()) + "\n" +
+                                "Скорость ветра(м/с): " + String.format("%.1f", parseWeather.wind
+                                                               .GetSpeedInMetersInSecond()) + "\n" +
                                 "Влажность(%): " +
                                 Integer.toString(parseWeather.atmosphere.GetHumidity()) + "\n" +
                                 "Давление(mmHg): " +
-                                Double.toString((int)parseWeather.atmosphere.GetPressureInMm()) + "\n" +
+                                Double.toString((int)parseWeather.atmosphere.GetPressureInMm())
+                                        + "\n" +
                                 "Видимость(км): " +
-                                Double.toString((int)parseWeather.atmosphere.GetVisibilityInKilometers());
+                                Double.toString((int)parseWeather.atmosphere
+                                                    .GetVisibilityInKilometers());
 
                 uriImage = parseWeather.image.getUrl();
 

@@ -3,12 +3,11 @@ package knack.weather;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.Locale;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.WeatherViewHolder>
 {
@@ -53,15 +52,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(WeatherViewHolder weatherViewHolder, int i)
     {
+
         weatherViewHolder.WeatherInDay.setText("Дата: " + forecasts[i].getDate() + "\n" +
                                                "День: " + forecasts[i].getDay() + "\n" +
                                                "Макс.температура(\u2103): " + String.format(
-                                                                                    Locale.ENGLISH,
                                                 "%.1f", forecasts[i].getHighInCelsius()) + "\n" +
                                                "Мин. температура(\u2103): " + String.format(
-                                                                                    Locale.ENGLISH,
                                                "%.1f", forecasts[i].getLowInCelsius()) + "\n" +
-                                               "Состояние: " + forecasts[i].getText());
+                                               "Состояние: " + forecasts[i]
+                                                                .GetCondidion(forecasts[i]
+                                                                .getCode()));
     }
 
     @Override
