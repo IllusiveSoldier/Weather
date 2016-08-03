@@ -1,5 +1,7 @@
 package knack.weather;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -336,6 +338,7 @@ public class ParseWeather
         double low;
         String text;
         int code;
+        String title;
         String readyString;
         Forecast[] ArrayOfForcasts;
 
@@ -428,6 +431,16 @@ public class ParseWeather
         public void setArrayOfForcasts(Forecast[] arrayOfForcasts)
         {
             ArrayOfForcasts = arrayOfForcasts;
+        }
+
+        public String getTitle()
+        {
+            return title;
+        }
+
+        public void setTitle(String title)
+        {
+            this.title = title;
         }
 
         public String GetCondidion(int code)
@@ -603,7 +616,12 @@ public class ParseWeather
             JSONObject jsonObjectImage = jsonObjectChannel.getJSONObject("image");
 
             Forecast[] forecasts = gson.fromJson(jsonObjectItem.getJSONArray("forecast").toString(),
+
                                                                                 Forecast[].class);
+            for (Forecast value : forecasts)
+            {
+                value.setTitle(jsonObjectItem.getString("title"));
+            }
             forecast.setArrayOfForcasts(forecasts);
 
             location = gson.fromJson(jsonObjectLocation.toString(), Location.class);

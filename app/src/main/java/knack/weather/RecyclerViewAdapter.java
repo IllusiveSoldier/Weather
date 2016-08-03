@@ -53,7 +53,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(WeatherViewHolder weatherViewHolder, int i)
     {
 
-        weatherViewHolder.WeatherInDay.setText("Дата: " + forecasts[i].getDate() + "\n" +
+        weatherViewHolder.WeatherInDay.setText("Заголовок: " + forecasts[i].getTitle() + "\n" +
+                                                "Дата: " + forecasts[i].getDate() + "\n" +
                                                "День: " + forecasts[i].getDay() + "\n" +
                                                "Макс.температура(\u2103): " + String.format(
                                                 "%.1f", forecasts[i].getHighInCelsius()) + "\n" +
