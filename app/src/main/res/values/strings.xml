@@ -1,26 +1,122 @@
 <resources>
-    <string name="app_name">Weather</string>
 
-    <string name="widgettext.getWeather">get my weather</string>
-    <string name="widgettext.getWeatherOnTenDays">get weather on another days</string>
+    <!-- Направление ветра -->
+    <string name="label.direction.north">North</string>
+    <string name="label.direction.north_east">North-east</string>
+    <string name="label.direction.east">East</string>
+    <string name="label.direction.south_east">South-east</string>
+    <string name="label.direction.south">South</string>
+    <string name="label.direction.south_west">South-west</string>
+    <string name="label.direction.west">West</string>
+    <string name="label.direction.north_west">North-west</string>
+    <string name="label.direction.error">Ошибка</string>
 
-    <string name="hint.your_weather">your weather</string>
-    <string name="hint.yourCity">Твой город:</string>
+    <!-- Погода -->
+    <string name="label.weather.code.0">Tornado</string>
+    <string name="label.weather.code.1">Tropical storm</string>
+    <string name="label.weather.code.2">Hurricane</string>
+    <string name="label.weather.code.3">severe thunderstorms</string>
+    <string name="label.weather.code.4">Thunderstorms</string>
+    <string name="label.weather.code.5">mixed rain and snow</string>
+    <string name="label.weather.code.6">Mixed rain and sleet</string>
+    <string name="label.weather.code.7">Mixed snow and sleet</string>
+    <string name="label.weather.code.8">Freezing drizzle</string>
+    <string name="label.weather.code.9">Drizzle</string>
+    <string name="label.weather.code.10">Freezing rain</string>
+    <string name="label.weather.code.11">Showers</string>
+    <string name="label.weather.code.12">Showers</string>
+    <string name="label.weather.code.13">Snow flurries</string>
+    <string name="label.weather.code.14">Light snow showers</string>
+    <string name="label.weather.code.15">Blowing snow</string>
+    <string name="label.weather.code.16">Snow</string>
+    <string name="label.weather.code.17">Hail</string>
+    <string name="label.weather.code.18">Sleet</string>
+    <string name="label.weather.code.19">Dust</string>
+    <string name="label.weather.code.20">Foggy</string>
+    <string name="label.weather.code.21">Haze</string>
+    <string name="label.weather.code.22">Smoky</string>
+    <string name="label.weather.code.23">Blustery</string>
+    <string name="label.weather.code.24">Windy</string>
+    <string name="label.weather.code.25">Cold</string>
+    <string name="label.weather.code.26">Cloudy</string>
+    <string name="label.weather.code.27">Mostly cloudy (night)</string>
+    <string name="label.weather.code.28">Mostly cloudy (day)</string>
+    <string name="label.weather.code.29">Partly cloudy (night)</string>
+    <string name="label.weather.code.30">Partly cloudy (day)</string>
+    <string name="label.weather.code.31">Clear (night)</string>
+    <string name="label.weather.code.32">Sunny</string>
+    <string name="label.weather.code.33">Fair (night)</string>
+    <string name="label.weather.code.34">Fair (day)</string>
+    <string name="label.weather.code.35">Mixed rain and hail</string>
+    <string name="label.weather.code.36">Hot</string>
+    <string name="label.weather.code.37">Isolated thunderstorms</string>
+    <string name="label.weather.code.38">Scattered thunderstorms</string>
+    <string name="label.weather.code.39">Scattered thunderstorms</string>
+    <string name="label.weather.code.40">Scattered showers</string>
+    <string name="label.weather.code.41">Heavy snow</string>
+    <string name="label.weather.code.42">Scattered snow showers</string>
+    <string name="label.weather.code.43">Heavy snow</string>
+    <string name="label.weather.code.44">Partly cloudy</string>
+    <string name="label.weather.code.45">Thundershowers</string>
+    <string name="label.weather.code.46">Snow showers</string>
+    <string name="label.weather.code.47">Isolated thundershowers</string>
+    <string name="label.weather.code.3200">Not available</string>
 
-    <string name="hint.country">Страна</string>
-    <string name="hint.region">Регион</string>
-    <string name="hint.city">Город</string>
+    <!-- Единицы измерения -->
+    <string name="label.units.km">km</string>
+    <string name="label.units.mm_Hg">mm Hg</string>
+    <string name="label.units.meters_in_second">m/s</string>
 
-    <string name="hint.tempOfWind">Температура ветра</string>
-    <string name="hint.directionOfwind">Напраление ветра</string>
-    <string name="hint.speedOfWind">Скорость ветра</string>
+    <!-- Пояснительные записи -->
+    <string name="label.explain.title">Title: </string>
+    <string name="label.explain.your_city">Your city: </string>
+    <string name="label.explain.country">Country: </string>
+    <string name="label.explain.region">Region: </string>
+    <string name="label.explain.city">City: </string>
+    <string name="label.explain.temp_of_wind">Chill: </string>
+    <string name="label.explain.direction_of_wind">Direction: </string>
+    <string name="label.explain.speed_of_wind">Wind speed: </string>
+    <string name="label.explain.humidity">Humidity: </string>
+    <string name="label.explain.pressure">Pressure: </string>
+    <string name="label.explain.visibility">Visibility: </string>
+    <string name="label.explain.loading">Loading…</string>
+    <string name="label.explain.max">Max.: </string>
+    <string name="label.explain.min">Min.: </string>
+    <string name="label.explain.day">Day: </string>
+    <string name="label.explain.condition">Condition: </string>
+    <string name="label.explain.date">Date: </string>
 
-    <string name="hint.humidity">Влажность</string>
-    <string name="hint.pressure">Давление</string>
-    <string name="hint.visibility">Видимость</string>
+    <!-- Дни недели -->
+    <string name="label.day_of_the_week.monday">Monday</string>
+    <string name="label.day_of_the_week.tuesday">Tuesday</string>
+    <string name="label.day_of_the_week.wednesday">Wednesday</string>
+    <string name="label.day_of_the_week.thursday">Thursday</string>
+    <string name="label.day_of_the_week.friday">Friday</string>
+    <string name="label.day_of_the_week.saturday">Saturday</string>
+    <string name="label.day_of_the_week.Sunday">Sunday</string>
 
-    <string name="hint.infoAboutWeather">Тут будет информация о погоде</string>
+    <!-- Для android:text у виджетов -->
+    <string name="label.widget_text.get_weather">Get my weather</string>
 
-    <string name="label.currentWeather">Weather - текущая погода</string>
-    <string name="hint.loading">Loading…</string>
+    <!-- Для TabLayout -->
+    <string name="label.tabs.current_weather">Current weather</string>
+    <string name="label.tabs.weather_forecast">Weather forecast</string>
+
+    <!-- Сообщения с ошибкой -->
+    <string name="message.error.error_download_weather_from_current_city">
+        Error downloading weather data from the current city!
+    </string>
+    <string name="message.error.enter_city">
+        To request weather data enter the name of the city!
+    </string>
+    <string name="message.error.error">Error</string>
+    <string name="message.error.message">Message</string>
+
+    <!-- Уведомления -->
+    <string name="message.notify.city_is_remove">The city is removed</string>
+    <string name="message.action.undo">UNDO</string>
+    
+    <!-- Другое -->
+    <string name="label.application.app_name">Weather</string>
+
 </resources>

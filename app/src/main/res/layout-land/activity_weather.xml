@@ -22,7 +22,7 @@
                 android:id="@+id/CityEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint.yourCity"
+                android:hint="@string/label.explain.your_city"
                 />
         </android.support.design.widget.TextInputLayout>
         <Button
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/widgettext.getWeather"
+            android:text="@string/label.widget_text.get_weather"
             />
     </LinearLayout>
 </LinearLayout>

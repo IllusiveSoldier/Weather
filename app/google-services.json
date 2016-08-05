@@ -1,12 +1,12 @@
 {
   "project_info": {
-    "project_number": "your project number",
-    "project_id": "your project_id"
+    "project_number": "909530928426",
+    "project_id": "weather-72de5"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "your api",
+        "mobilesdk_app_id": "1:909530928426:android:db07b2bb1277b0a3",
         "android_client_info": {
           "package_name": "knack.weather"
         }
@@ -14,14 +14,14 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "yout current key"
+          "current_key": "AIzaSyCEyhLAw7SZRDejtJNBubyaCmipbQt0kCw"
         }
       ],
       "services": {
         "analytics_service": {
           "status": 2,
           "analytics_property": {
-            "tracking_id": "your tracking_id"
+            "tracking_id": "UA-82072542-1"
           }
         },
         "appinvite_service": {

@@ -50,6 +50,7 @@ public class WeatherOnAnotherDaysFragment extends Fragment
     private void initializeAdapter()
     {
         RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(forecasts);
+        recyclerViewAdapter.setContext(getActivity());
         rv.setAdapter(recyclerViewAdapter);
     }
 }

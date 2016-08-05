@@ -15,7 +15,7 @@ public class AnalyticsApplication extends android.app.Application
 
         analytics = GoogleAnalytics.getInstance(this);
         analytics.setLocalDispatchPeriod(1800);
-        tracker = analytics.newTracker("Your tracking id");
+        tracker = analytics.newTracker("UA-82072542-1");
         tracker.enableExceptionReporting(true);
         tracker.enableAdvertisingIdCollection(true);
         tracker.enableAutoActivityTracking(true);

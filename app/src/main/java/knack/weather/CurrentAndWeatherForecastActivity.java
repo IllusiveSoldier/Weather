@@ -61,6 +61,7 @@ public class CurrentAndWeatherForecastActivity extends AppCompatActivity
         setupTabIcons();
 
         tracker = AnalyticsApplication.tracker;
+        // Отправляем в google analytics event о том, что пользователь просмотрел погоду
         tracker.send(new HitBuilders.EventBuilder()
                 .setCategory("Events")
                 .setAction("Watching the Weather")
@@ -76,8 +77,8 @@ public class CurrentAndWeatherForecastActivity extends AppCompatActivity
     private void setupViewPager(ViewPager viewPager)
     {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(currentWeatherFragment, "Current weather");
-        adapter.addFragment(weatherOnAnotherDaysFragment, "Weather forecast");
+        adapter.addFragment(currentWeatherFragment, getResources().getString(R.string.label_tabs_current_weather));
+        adapter.addFragment(weatherOnAnotherDaysFragment, getResources().getString(R.string.label_tabs_weather_forecast));
         viewPager.setAdapter(adapter);
     }
 

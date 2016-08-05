@@ -10,26 +10,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".WeatherActivity"
     android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-
             <EditText
                 android:id="@+id/CityEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint.yourCity"
+                android:hint="@string/label.explain.your_city"
                 />
-
         </android.support.design.widget.TextInputLayout>
-
         <Button
             android:id="@+id/RefreshButton"
             android:layout_width="42dp"
@@ -37,15 +32,12 @@
             android:layout_weight="0"
             android:background="@mipmap/ic_refresh_black_24dp"
             />
-
     </LinearLayout>
-
     <Button
         android:id="@+id/GetMyWeatherButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/widgettext.getWeather"
+        android:text="@string/label.widget_text.get_weather"
         />
-
 </LinearLayout>

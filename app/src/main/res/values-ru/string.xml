@@ -1,0 +1,122 @@
+<resources>
+
+    <!-- Направление ветра -->
+    <string name="label.direction.north">Северное</string>
+    <string name="label.direction.north_east">Северо-восточное</string>
+    <string name="label.direction.east">Восточное</string>
+    <string name="label.direction.south_east">Юго-восточное</string>
+    <string name="label.direction.south">Южное</string>
+    <string name="label.direction.south_west">Юго-западное</string>
+    <string name="label.direction.west">Западное</string>
+    <string name="label.direction.north_west">Северо-западное</string>
+    <string name="label.direction.error">Ошибка</string>
+
+    <!-- Погода -->
+    <string name="label.weather.code.0">Торнадо</string>
+    <string name="label.weather.code.1">Тропический шторм</string>
+    <string name="label.weather.code.2">Ураган</string>
+    <string name="label.weather.code.3">Сильные грозы</string>
+    <string name="label.weather.code.4">Грозы</string>
+    <string name="label.weather.code.5">Смешанные дождь и снег</string>
+    <string name="label.weather.code.6">Смешанные дождь и мокрый снег</string>
+    <string name="label.weather.code.7">Смешанные снег и гололедица</string>
+    <string name="label.weather.code.8">Изморось</string>
+    <string name="label.weather.code.9">Мелкий дождь</string>
+    <string name="label.weather.code.10">Ледяной дождь</string>
+    <string name="label.weather.code.11">Кратковременные дожди</string>
+    <string name="label.weather.code.12">Кратковременные дожди</string>
+    <string name="label.weather.code.13">Снегопад</string>
+    <string name="label.weather.code.14">Небольшие снегопады</string>
+    <string name="label.weather.code.15">Метель</string>
+    <string name="label.weather.code.16">Снег</string>
+    <string name="label.weather.code.17">Град</string>
+    <string name="label.weather.code.18">Мокрый снег</string>
+    <string name="label.weather.code.19">Пыль</string>
+    <string name="label.weather.code.20">Туман</string>
+    <string name="label.weather.code.21">Лёгкий туман</string>
+    <string name="label.weather.code.22">Задымлённо</string>
+    <string name="label.weather.code.23">Ветреное</string>
+    <string name="label.weather.code.24">Небольшая ветреность</string>
+    <string name="label.weather.code.25">Прохладно</string>
+    <string name="label.weather.code.26">Облачно</string>
+    <string name="label.weather.code.27">Преимущественно облачно(ночь)</string>
+    <string name="label.weather.code.28">Преимущественно облачно(день)</string>
+    <string name="label.weather.code.29">Небольшая облачность(ночь)</string>
+    <string name="label.weather.code.30">Небольшая облачность(день)</string>
+    <string name="label.weather.code.31">Ясно(ночь)</string>
+    <string name="label.weather.code.32">Солнечно</string>
+    <string name="label.weather.code.33">Светло(ночь)</string>
+    <string name="label.weather.code.34">Светло(день)</string>
+    <string name="label.weather.code.35">Дождь с градом</string>
+    <string name="label.weather.code.36">Жарко</string>
+    <string name="label.weather.code.37">Отдельно грозы</string>
+    <string name="label.weather.code.38">Временами грозы</string>
+    <string name="label.weather.code.39">Временами грозы</string>
+    <string name="label.weather.code.40">Местами проливные дожди</string>
+    <string name="label.weather.code.41">Сильный снегопад</string>
+    <string name="label.weather.code.42">Редкий снег</string>
+    <string name="label.weather.code.43">Сильный снегопад</string>
+    <string name="label.weather.code.44">Переменная облачность</string>
+    <string name="label.weather.code.45">Ливни с грозами</string>
+    <string name="label.weather.code.46">Ливневый дождь</string>
+    <string name="label.weather.code.47">Местами ливни</string>
+    <string name="label.weather.code.3200">Не доступно</string>
+
+    <!-- Единицы измерения -->
+    <string name="label.units.km">км</string>
+    <string name="label.units.mm_Hg">мм рт. ст.</string>
+    <string name="label.units.meters_in_second">м/с</string>
+
+    <!-- Пояснительные записи -->
+    <string name="label.explain.title">Заголовое: </string>
+    <string name="label.explain.your_city">Твой город: </string>
+    <string name="label.explain.country">Страна: </string>
+    <string name="label.explain.region">Регион: </string>
+    <string name="label.explain.city">Город: </string>
+    <string name="label.explain.temp_of_wind">Температура: </string>
+    <string name="label.explain.direction_of_wind">Направление: </string>
+    <string name="label.explain.speed_of_wind">Скорость ветра: </string>
+    <string name="label.explain.humidity">Влажность: </string>
+    <string name="label.explain.pressure">Давление: </string>
+    <string name="label.explain.visibility">Видимость: </string>
+    <string name="label.explain.loading">Загрузка…</string>
+    <string name="label.explain.max">Мин.: </string>
+    <string name="label.explain.min">Макс.: </string>
+    <string name="label.explain.day">День: </string>
+    <string name="label.explain.condition">Состояние: </string>
+    <string name="label.explain.date">Дата: </string>
+
+    <!-- Дни недели -->
+    <string name="label.day_of_the_week.monday">Понедельник</string>
+    <string name="label.day_of_the_week.tuesday">Вторник</string>
+    <string name="label.day_of_the_week.wednesday">Среда</string>
+    <string name="label.day_of_the_week.thursday">Четверг</string>
+    <string name="label.day_of_the_week.friday">Пятница</string>
+    <string name="label.day_of_the_week.saturday">Суббота</string>
+    <string name="label.day_of_the_week.Sunday">Воскресенье</string>
+
+    <!-- Для android:text у виджетов -->
+    <string name="label.widget_text.get_weather">Получить погоду</string>
+
+    <!-- Для TabLayout -->
+    <string name="label.tabs.current_weather">Текущая</string>
+    <string name="label.tabs.weather_forecast">Прогноз</string>
+
+    <!-- Сообщения с ошибкой -->
+    <string name="message.error.error_download_weather_from_current_city">
+        Ошибка получения погоды для указанного города!
+    </string>
+    <string name="message.error.enter_city">
+        Чтобы запросить данные о погоде введи город!
+    </string>
+    <string name="message.error.error">Ошибка</string>
+    <string name="message.error.message">Сообщение</string>
+
+    <!-- Уведомления -->
+    <string name="message.notify.city_is_remove">Город удалён</string>
+    <string name="message.action.undo">ОТМЕНИТЬ</string>
+
+    <!-- Другое -->
+    <string name="label.application.app_name">Weather</string>
+
+</resources>

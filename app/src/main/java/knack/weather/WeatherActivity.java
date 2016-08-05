@@ -1,5 +1,6 @@
 package knack.weather;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -23,6 +24,7 @@ public class WeatherActivity extends AppCompatActivity
     EditText CityEditText;
     Button RefreshButton;
     Button GetMyWeatherButton;
+    Snackbar snackbar;
 
     // Ответ от сервера с погодой
     String rawJsonString;
@@ -31,8 +33,6 @@ public class WeatherActivity extends AppCompatActivity
 
     // Флаг для отладки
     final String TAG = "TEST";
-
-    Snackbar snackbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -63,14 +63,16 @@ public class WeatherActivity extends AppCompatActivity
                     }
                     catch (Exception e)
                     {
-                        Toast.makeText(getApplicationContext(), "Ошибка! \n Сообщение: "
-                                + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.message_error_error) + "\n" +
+                                getResources().getString(R.string.message_error_message) + ": " +
+                                        e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
                 else
                 {
                     Toast.makeText(WeatherActivity.this,
-                            "Чтобы просмотреть погоду введи название города.",
+                            getResources().getString(R.string.message_error_enter_city),
                             Toast.LENGTH_LONG)
                             .show();
                 }
@@ -98,8 +100,11 @@ public class WeatherActivity extends AppCompatActivity
                 bufferCityEditText = CityEditText.getText().toString();
                 CityEditText.setText("");
                 snackbar = Snackbar
-                        .make(view, "Город удалён", Snackbar.LENGTH_LONG)
-                        .setAction("UNDO", new View.OnClickListener()
+                        .make(view, getResources()
+                                .getString(R.string.message_notify_city_is_remove),
+                                Snackbar.LENGTH_LONG)
+                        .setAction(getResources()
+                                .getString(R.string.message_action_undo), new View.OnClickListener()
                         {
                             @Override
                             public void onClick(View view)
@@ -123,6 +128,7 @@ public class WeatherActivity extends AppCompatActivity
     }
 
     // Класс для GET-запроса и получения ответа
+    @TargetApi(19)
     public class GetExample
     {
         OkHttpClient client = new OkHttpClient();
@@ -148,7 +154,7 @@ public class WeatherActivity extends AppCompatActivity
         {
             // Перед началом выполенения вырубаем кнопку
             GetMyWeatherButton.setEnabled(false);
-            GetMyWeatherButton.setText(getResources().getString(R.string.hint_loading));
+            GetMyWeatherButton.setText(getResources().getString(R.string.label_explain_loading));
         }
 
         @Override
@@ -171,13 +177,14 @@ public class WeatherActivity extends AppCompatActivity
         {
             // После выполнения - включаем
             GetMyWeatherButton.setEnabled(true);
-            GetMyWeatherButton.setText(getResources().getString(R.string.widgettext_getWeather));
+            GetMyWeatherButton.setText(getResources().getString(R.string.label_widget_text_get_weather));
             BindOfValues(result);
         }
 
         private void BindOfValues(String values)
         {
-            Intent intent = new Intent(WeatherActivity.this, CurrentAndWeatherForecastActivity.class);
+            Intent intent = new Intent(WeatherActivity.this,
+                                       CurrentAndWeatherForecastActivity.class);
             intent.putExtra("jsonString", values);
             startActivity(intent);
         }
