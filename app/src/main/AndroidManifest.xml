@@ -9,16 +9,18 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <activity android:name=".WeatherActivity"
-            android:theme="@style/SalatTheme">
+        <activity
+            android:name=".WeatherActivity"
+            android:theme="@style/SeaTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".WeatherOnDaysActivity"
-            android:theme="@style/PurpleTheme">
+        <activity
+            android:name=".CurrentAndWeatherForecastActivity"
+            android:theme="@style/SeaTheme">
         </activity>
     </application>
 

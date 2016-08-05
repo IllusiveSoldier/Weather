@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,60 +8,36 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".WeatherActivity">
-
+    tools:context=".WeatherActivity"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
+        android:orientation="horizontal">
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="1">
             <EditText
                 android:id="@+id/CityEditText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:hint="@string/hint.yourCity"
                 />
-            <Button
-                android:id="@+id/RefreshButton"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_weight="0"
-                android:background="@mipmap/ic_refresh_black_24dp"
-                />
-            <Button
-                android:id="@+id/getMyWeatherButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/widgettext.getWeather"
-                />
-            <Button
-                android:id="@+id/GetWeatherOnTenDays"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/widgettext.getWeatherOnTenDays"
-                />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/InfoAboutWeather"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint.infoAboutWeather"
-            android:textAllCaps="true"
-            style="@style/StyleForContentText"
+        </android.support.design.widget.TextInputLayout>
+        <Button
+            android:id="@+id/RefreshButton"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_weight="0"
+            android:background="@mipmap/ic_refresh_black_24dp"
             />
-        <ImageView
-            android:id="@+id/YahooImageView"
+        <Button
+            android:id="@+id/GetMyWeatherButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_gravity="center"
+            android:text="@string/widgettext.getWeather"
             />
     </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>
