@@ -22,4 +22,5 @@
     <string name="hint.infoAboutWeather">Тут будет информация о погоде</string>
 
     <string name="label.currentWeather">Weather - текущая погода</string>
+    <string name="hint.loading">Loading…</string>
 </resources>

@@ -148,6 +148,7 @@ public class WeatherActivity extends AppCompatActivity
         {
             // Перед началом выполенения вырубаем кнопку
             GetMyWeatherButton.setEnabled(false);
+            GetMyWeatherButton.setText(getResources().getString(R.string.hint_loading));
         }
 
         @Override
@@ -170,6 +171,7 @@ public class WeatherActivity extends AppCompatActivity
         {
             // После выполнения - включаем
             GetMyWeatherButton.setEnabled(true);
+            GetMyWeatherButton.setText(getResources().getString(R.string.widgettext_getWeather));
             BindOfValues(result);
         }
 
