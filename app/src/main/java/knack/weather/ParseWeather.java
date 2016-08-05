@@ -1,5 +1,7 @@
 package knack.weather;
 
+import android.widget.Adapter;
+
 import com.google.gson.Gson;
 
 import org.json.JSONException;

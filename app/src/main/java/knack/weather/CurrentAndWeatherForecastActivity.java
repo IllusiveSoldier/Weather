@@ -1,13 +1,18 @@
 package knack.weather;
 
 import android.content.Intent;
+
 import android.os.Bundle;
+
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +23,7 @@ public class CurrentAndWeatherForecastActivity extends AppCompatActivity
     private ViewPager viewPager;
 
     String myJsonString;
+    Tracker tracker;
 
     private int[] tabIcons = {
             R.mipmap.ic_cloud_black_24dp,
@@ -53,6 +59,12 @@ public class CurrentAndWeatherForecastActivity extends AppCompatActivity
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+
+        tracker = AnalyticsApplication.tracker;
+        tracker.send(new HitBuilders.EventBuilder()
+                .setCategory("Events")
+                .setAction("Watching the Weather")
+                .build());
     }
 
     private void setupTabIcons()
