@@ -9,11 +9,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".WeatherActivity">
-        <TextView
-            android:id="@+id/InfoAboutWeather"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            style="@style/StyleForContentText"
-            />
+    <TextView
+        android:id="@+id/InfoAboutWeather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        style="@style/StyleForContentText"
+        />
+    <ImageView
+        android:id="@+id/ImageYahooView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

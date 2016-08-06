@@ -1,17 +1,22 @@
 package knack.weather;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
 
 public class CurrentWeatherFragment extends Fragment
 {
     TextView InfoAboutWeather;
+    ImageView ImageYahooView;
 
     public CurrentWeatherFragment()
     {
@@ -30,7 +35,10 @@ public class CurrentWeatherFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_current_weather, container, false);
 
+        ImageYahooView = (ImageView) view.findViewById(R.id.ImageYahooView);
         InfoAboutWeather = (TextView) view.findViewById(R.id.InfoAboutWeather);
+        InfoAboutWeather.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),
+                "fonts/Roboto/Roboto-Light.ttf"));
         Bundle bundle = getArguments();
         FormatOutput formatOutput = new FormatOutput(getActivity());
         ParseWeather parseWeather = new ParseWeather(bundle.getString("jsonString"));
@@ -67,6 +75,11 @@ public class CurrentWeatherFragment extends Fragment
                             formatOutput.GetKmLabel();
 
             InfoAboutWeather.setText(s);
+            Picasso.with(getActivity())
+                    .load(parseWeather.image.GetUriImage())
+                    .placeholder(R.mipmap.ic_sync_black_24dp)
+                    .error(R.mipmap.ic_cloud_off_black_24dp)
+                    .into(ImageYahooView);
         }
         else
         {

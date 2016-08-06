@@ -2,6 +2,7 @@ package knack.weather;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -41,8 +42,13 @@ public class WeatherActivity extends AppCompatActivity
         setContentView(R.layout.activity_weather);
 
         CityEditText = (EditText) findViewById(R.id.CityEditText);
+        CityEditText.setTypeface(Typeface.createFromAsset(getAssets(),
+                "fonts/Roboto/Roboto-Light.ttf"));
 
         GetMyWeatherButton = (Button) findViewById(R.id.GetMyWeatherButton);
+        GetMyWeatherButton.setTypeface(Typeface.createFromAsset(getAssets(),
+                "fonts/Roboto/Roboto-Light.ttf"));
+
         // --- СЛУШАТЕЛЬ onClick ДЛЯ КНОПКИ GetMyWeatherButton ---
         GetMyWeatherButton.setOnClickListener(new View.OnClickListener()
         {
