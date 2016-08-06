@@ -23,7 +23,6 @@
 
         <activity
             android:name=".CurrentAndWeatherForecastActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/SeaTheme">
         </activity>
     </application>
