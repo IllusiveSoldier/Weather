@@ -68,7 +68,7 @@
     <string name="label.units.meters_in_second">м/с</string>
 
     <!-- Пояснительные записи -->
-    <string name="label.explain.title">Заголовое: </string>
+    <string name="label.explain.title">Заголовок: </string>
     <string name="label.explain.your_city">Твой город: </string>
     <string name="label.explain.country">Страна: </string>
     <string name="label.explain.region">Регион: </string>
@@ -85,6 +85,9 @@
     <string name="label.explain.day">День: </string>
     <string name="label.explain.condition">Состояние: </string>
     <string name="label.explain.date">Дата: </string>
+    <string name="label.explain.location">Местоположение</string>
+    <string name="label.explain.wind">Ветер</string>
+    <string name="label.explain.atmosphere">Атмосфера</string>
 
     <!-- Дни недели -->
     <string name="label.day_of_the_week.monday">Понедельник</string>

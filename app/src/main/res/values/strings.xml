@@ -85,6 +85,9 @@
     <string name="label.explain.day">Day: </string>
     <string name="label.explain.condition">Condition: </string>
     <string name="label.explain.date">Date: </string>
+    <string name="label.explain.location">Location</string>
+    <string name="label.explain.wind">Wind</string>
+    <string name="label.explain.atmosphere">Atmosphere</string>
 
     <!-- Дни недели -->
     <string name="label.day_of_the_week.monday">Monday</string>

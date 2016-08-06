@@ -334,4 +334,22 @@ public class FormatOutput
         return context.getResources()
                 .getString(R.string.message_error_error_download_weather_from_current_city);
     }
+
+    public String GetLocationLabel()
+    {
+        return context.getResources()
+                .getString(R.string.label_explain_location);
+    }
+
+    public String GetWindLabel()
+    {
+        return context.getResources()
+                .getString(R.string.label_explain_wind);
+    }
+
+    public String GetAtmosphereLabel()
+    {
+        return context.getResources()
+                .getString(R.string.label_explain_atmosphere);
+    }
 }

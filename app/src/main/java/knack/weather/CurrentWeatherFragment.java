@@ -37,13 +37,14 @@ public class CurrentWeatherFragment extends Fragment
         parseWeather.Parse();
         if (parseWeather.isCheck())
         {
-            String s =
+            String s = formatOutput.GetLocationLabel() + "\n" +
                     formatOutput.GetCountyLabel() + " " +
                             parseWeather.location.GetCountry() + "\n" +
                     formatOutput.GetRegionLabel() + " " +
                             parseWeather.location.GetRegion() + "\n" +
                     formatOutput.GetCityLabel() + " " +
-                            parseWeather.location.GetCity() + "\n" +
+                            parseWeather.location.GetCity() + "\n\n" +
+                    formatOutput.GetWindLabel() + "\n" +
                     formatOutput.GetChillLabel() + " " +
                             String.format(Locale.ENGLISH,
                                     "%.1f", parseWeather.wind.GetChillInCelsius()) +
@@ -54,7 +55,8 @@ public class CurrentWeatherFragment extends Fragment
                     formatOutput.GetSpeedOfWindLabel() + " " +
                             String.format(Locale.ENGLISH,
                                     "%.1f", parseWeather.wind.GetSpeedInMetersInSecond()) + " " +
-                            formatOutput.GetMetersInSecondLabel() + "\n" +
+                            formatOutput.GetMetersInSecondLabel() + "\n\n" +
+                    formatOutput.GetAtmosphereLabel() + "\n" +
                     formatOutput.GetHumidityLabel() + " " +
                             parseWeather.atmosphere.GetHumidity() + "%" + "\n" +
                     formatOutput.GetPressureLabel() + " " +
