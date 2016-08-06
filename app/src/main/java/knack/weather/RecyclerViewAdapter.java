@@ -62,7 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         FormatOutput formatOutput = new FormatOutput(context);
         String s =
-                formatOutput.GetTitlelabel() + " " + forecasts[i].getTitle() + "\n" +
+                formatOutput.GetTitleLabel() + " " + forecasts[i].getTitle() + "\n" +
                 formatOutput.GetDateLabel() + " " + forecasts[i].getDate() + "\n" +
                 formatOutput.GetDayLabel() + " " +
                         formatOutput.GetDay(forecasts[i].getDay()) + "\n" +

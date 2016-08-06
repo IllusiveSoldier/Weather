@@ -264,7 +264,7 @@ public class FormatOutput
         return context.getResources().getString(R.string.label_explain_direction_of_wind);
     }
 
-    public String GetSppedOfWindLabel()
+    public String GetSpeedOfWindLabel()
     {
         return context.getResources().getString(R.string.label_explain_speed_of_wind);
     }
@@ -279,27 +279,27 @@ public class FormatOutput
         return context.getResources().getString(R.string.label_explain_pressure);
     }
 
-    public String GetVisibilitylabel()
+    public String GetVisibilityLabel()
     {
         return context.getResources().getString(R.string.label_explain_visibility);
     }
 
-    public String GetKmlabelLabel()
+    public String GetKmLabel()
     {
         return context.getResources().getString(R.string.label_units_km);
     }
 
-    public String GetmmHgLabel()
+    public String GetMmHgLabel()
     {
         return context.getResources().getString(R.string.label_units_mm_Hg);
     }
 
-    public String GetmetersInsecondLabel()
+    public String GetMetersInSecondLabel()
     {
         return context.getResources().getString(R.string.label_units_meters_in_second);
     }
 
-    public String GetTitlelabel()
+    public String GetTitleLabel()
     {
         return context.getResources().getString(R.string.label_explain_title);
     }
@@ -334,6 +334,4 @@ public class FormatOutput
         return context.getResources()
                 .getString(R.string.message_error_error_download_weather_from_current_city);
     }
-
-
 }

@@ -46,22 +46,23 @@ public class CurrentWeatherFragment extends Fragment
                             parseWeather.location.GetCity() + "\n" +
                     formatOutput.GetChillLabel() + " " +
                             String.format(Locale.ENGLISH,
-                                    "%.1f", parseWeather.wind.GetChillInCelsius()) + "\n" +
+                                    "%.1f", parseWeather.wind.GetChillInCelsius()) +
+                            " \u2103" + "\n" +
                     formatOutput.GetDirectLabel() + " " +
                             formatOutput.GetDirectionOfWind(
                                     parseWeather.wind.GetDirection()) + "\n" +
-                    formatOutput.GetSppedOfWindLabel() + " " +
+                    formatOutput.GetSpeedOfWindLabel() + " " +
                             String.format(Locale.ENGLISH,
                                     "%.1f", parseWeather.wind.GetSpeedInMetersInSecond()) + " " +
-                            formatOutput.GetmetersInsecondLabel() + "\n" +
+                            formatOutput.GetMetersInSecondLabel() + "\n" +
                     formatOutput.GetHumidityLabel() + " " +
                             parseWeather.atmosphere.GetHumidity() + "%" + "\n" +
                     formatOutput.GetPressureLabel() + " " +
                             (int)parseWeather.atmosphere.GetPressureInMm() + " " +
-                            formatOutput.GetmmHgLabel() + "\n" +
-                    formatOutput.GetVisibilitylabel() + " " +
+                            formatOutput.GetMmHgLabel() + "\n" +
+                    formatOutput.GetVisibilityLabel() + " " +
                             (int)parseWeather.atmosphere.GetVisibilityInKilometers() + " " +
-                            formatOutput.GetKmlabelLabel();
+                            formatOutput.GetKmLabel();
 
             InfoAboutWeather.setText(s);
         }
