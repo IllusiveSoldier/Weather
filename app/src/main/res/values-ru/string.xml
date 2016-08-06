@@ -80,8 +80,8 @@
     <string name="label.explain.pressure">Давление: </string>
     <string name="label.explain.visibility">Видимость: </string>
     <string name="label.explain.loading">Загрузка…</string>
-    <string name="label.explain.max">Мин.: </string>
-    <string name="label.explain.min">Макс.: </string>
+    <string name="label.explain.max">Макс.: </string>
+    <string name="label.explain.min">Мин.: </string>
     <string name="label.explain.day">День: </string>
     <string name="label.explain.condition">Состояние: </string>
     <string name="label.explain.date">Дата: </string>

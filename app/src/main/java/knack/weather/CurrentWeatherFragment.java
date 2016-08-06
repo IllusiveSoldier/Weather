@@ -3,6 +3,8 @@ package knack.weather;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +39,7 @@ public class CurrentWeatherFragment extends Fragment
 
         ImageYahooView = (ImageView) view.findViewById(R.id.ImageYahooView);
         InfoAboutWeather = (TextView) view.findViewById(R.id.InfoAboutWeather);
+        InfoAboutWeather.setMovementMethod(new ScrollingMovementMethod());
         InfoAboutWeather.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),
                 "fonts/Roboto/Roboto-Light.ttf"));
         Bundle bundle = getArguments();
@@ -45,41 +48,7 @@ public class CurrentWeatherFragment extends Fragment
         parseWeather.Parse();
         if (parseWeather.isCheck())
         {
-            String s = formatOutput.GetLocationLabel() + "\n" +
-                    formatOutput.GetCountyLabel() + " " +
-                            parseWeather.location.GetCountry() + "\n" +
-                    formatOutput.GetRegionLabel() + " " +
-                            parseWeather.location.GetRegion() + "\n" +
-                    formatOutput.GetCityLabel() + " " +
-                            parseWeather.location.GetCity() + "\n\n" +
-                    formatOutput.GetWindLabel() + "\n" +
-                    formatOutput.GetChillLabel() + " " +
-                            String.format(Locale.ENGLISH,
-                                    "%.1f", parseWeather.wind.GetChillInCelsius()) +
-                            " \u2103" + "\n" +
-                    formatOutput.GetDirectLabel() + " " +
-                            formatOutput.GetDirectionOfWind(
-                                    parseWeather.wind.GetDirection()) + "\n" +
-                    formatOutput.GetSpeedOfWindLabel() + " " +
-                            String.format(Locale.ENGLISH,
-                                    "%.1f", parseWeather.wind.GetSpeedInMetersInSecond()) + " " +
-                            formatOutput.GetMetersInSecondLabel() + "\n\n" +
-                    formatOutput.GetAtmosphereLabel() + "\n" +
-                    formatOutput.GetHumidityLabel() + " " +
-                            parseWeather.atmosphere.GetHumidity() + "%" + "\n" +
-                    formatOutput.GetPressureLabel() + " " +
-                            (int)parseWeather.atmosphere.GetPressureInMm() + " " +
-                            formatOutput.GetMmHgLabel() + "\n" +
-                    formatOutput.GetVisibilityLabel() + " " +
-                            (int)parseWeather.atmosphere.GetVisibilityInKilometers() + " " +
-                            formatOutput.GetKmLabel();
-
-            InfoAboutWeather.setText(s);
-            Picasso.with(getActivity())
-                    .load(parseWeather.image.GetUriImage())
-                    .placeholder(R.mipmap.ic_sync_black_24dp)
-                    .error(R.mipmap.ic_cloud_off_black_24dp)
-                    .into(ImageYahooView);
+            SetValues(parseWeather, formatOutput);
         }
         else
         {
@@ -93,6 +62,47 @@ public class CurrentWeatherFragment extends Fragment
     public void onSaveInstanceState(Bundle savedInstanceState)
     {
         super.onSaveInstanceState(savedInstanceState);
+    }
+
+    public void SetValues(ParseWeather parseWeather, FormatOutput formatOutput)
+    {
+        String s = formatOutput.GetLocationLabel() + "\n" +
+                formatOutput.GetCountyLabel() + " " +
+                parseWeather.location.GetCountry() + "\n" +
+                formatOutput.GetRegionLabel() + " " +
+                parseWeather.location.GetRegion() + "\n" +
+                formatOutput.GetCityLabel() + " " +
+                parseWeather.location.GetCity() + "\n\n" +
+                formatOutput.GetWindLabel() + "\n" +
+                formatOutput.GetChillLabel() + " " +
+                String.format(Locale.ENGLISH,
+                        "%.1f", parseWeather.wind.GetChillInCelsius()) +
+                " \u2103" + "\n" +
+                formatOutput.GetDirectLabel() + " " +
+                formatOutput.GetDirectionOfWind(
+                        parseWeather.wind.GetDirection()) + "\n" +
+                formatOutput.GetSpeedOfWindLabel() + " " +
+                String.format(Locale.ENGLISH,
+                        "%.1f", parseWeather.wind.GetSpeedInMetersInSecond()) + " " +
+                formatOutput.GetMetersInSecondLabel() + "\n\n" +
+                formatOutput.GetAtmosphereLabel() + "\n" +
+                formatOutput.GetHumidityLabel() + " " +
+                parseWeather.atmosphere.GetHumidity() + "%" + "\n" +
+                formatOutput.GetPressureLabel() + " " +
+                (int)parseWeather.atmosphere.GetPressureInMm() + " " +
+                formatOutput.GetMmHgLabel() + "\n" +
+                formatOutput.GetVisibilityLabel() + " " +
+                (int)parseWeather.atmosphere.GetVisibilityInKilometers() + " " +
+                formatOutput.GetKmLabel();
+
+
+        InfoAboutWeather.setText(s);
+
+        Picasso.with(getActivity())
+                .load(parseWeather.image.GetUriImage())
+                .placeholder(R.mipmap.ic_sync_black_24dp)
+                .error(R.mipmap.ic_cloud_off_black_24dp)
+                .into(ImageYahooView);
     }
 }
 
