@@ -12,17 +12,17 @@ public class DataWithCities
 
     Random random = new Random();
 
-    public String GetRandomCity()
+    public String getRandomCity()
     {
         return source[random.nextInt(source.length)];
     }
 
-    public String[] GetAllCities()
+    public String[] getAllCities()
     {
         return source;
     }
 
-    public int GetSizeOfArrayOfCities()
+    public int getSizeOfArrayOfCities()
     {
         return source.length;
     }

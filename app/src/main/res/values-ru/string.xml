@@ -118,6 +118,10 @@
     <!-- Уведомления -->
     <string name="message.notify.city_is_remove">Город удалён</string>
     <string name="message.action.undo">ОТМЕНИТЬ</string>
+    <string name="message.action.activate_gps">Активируйте геолокацию!</string>
+    <string name="message.notify.permission">
+        Местоположение небоходимо для поиска города, в котором вы находитесь
+    </string>
 
     <!-- Другое -->
     <string name="label.application.app_name">Weather</string>

@@ -118,6 +118,10 @@
     <!-- Уведомления -->
     <string name="message.notify.city_is_remove">The city is removed</string>
     <string name="message.action.undo">UNDO</string>
+    <string name="message.action.activate_gps">Activate geolocation!</string>
+    <string name="message.notify.permission">
+        Activate geolocation for searching your city
+    </string>
     
     <!-- Другое -->
     <string name="label.application.app_name">Weather</string>

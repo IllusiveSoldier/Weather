@@ -2,6 +2,7 @@ package knack.weather;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -14,6 +15,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,20 +26,17 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.identity.intents.Address;
 import com.google.android.gms.location.LocationServices;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class WeatherActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener
+public class WeatherActivity extends AppCompatActivity
+        implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener
 {
     EditText CityEditText;
     Button RefreshButton;
@@ -65,12 +64,11 @@ public class WeatherActivity extends AppCompatActivity implements GoogleApiClien
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        // First we need to check availability of play services
         if (checkPlayServices())
         {
-            // Building the GoogleApi client
             buildGoogleApiClient();
         }
+
 
         CityEditText = (EditText) findViewById(R.id.CityEditText);
         CityEditText.setTypeface(Typeface.createFromAsset(getAssets(),
@@ -124,7 +122,7 @@ public class WeatherActivity extends AppCompatActivity implements GoogleApiClien
             public void onClick(View view)
             {
                 DataWithCities dataWithCities = new DataWithCities();
-                CityEditText.setText(dataWithCities.GetRandomCity());
+                CityEditText.setText(dataWithCities.getRandomCity());
             }
         });
 
@@ -163,29 +161,36 @@ public class WeatherActivity extends AppCompatActivity implements GoogleApiClien
             }
         });
 
+
         LocationFloatingButton = (FloatingActionButton) findViewById(R.id.LocationFloatingButton);
         LocationFloatingButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
+                int permissionCheck = ContextCompat.checkSelfPermission(WeatherActivity.this,
+                        Manifest.permission.ACCESS_FINE_LOCATION);
+                Log.d(TAG, "permissionCheck: " + permissionCheck);
+
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                 {
-                    int canRead = ContextCompat.checkSelfPermission(WeatherActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
-
-                    if (canRead != PackageManager.PERMISSION_GRANTED)
+                    if (permissionCheck != PackageManager.PERMISSION_GRANTED)
                     {
-                        if (ActivityCompat.shouldShowRequestPermissionRationale(WeatherActivity.this, Manifest.permission.ACCESS_FINE_LOCATION))
+                        if (ActivityCompat
+                                .shouldShowRequestPermissionRationale(WeatherActivity.this,
+                                        Manifest.permission.ACCESS_FINE_LOCATION))
                         {
                         }
                         else
                         {
-                            requestPermissions(new String[]{ Manifest.permission.ACCESS_FINE_LOCATION }, NUMBER_OF_REQUEST);
+                            requestPermissions(new String[]
+                                    { Manifest.permission.ACCESS_FINE_LOCATION },
+                                    NUMBER_OF_REQUEST);
                         }
                     }
                     else
                     {
-                        displayLocation();
+                         displayLocation();
                     }
                 }
             }
@@ -194,7 +199,6 @@ public class WeatherActivity extends AppCompatActivity implements GoogleApiClien
 
     private void displayLocation()
     {
-
         location = LocationServices.FusedLocationApi
                 .getLastLocation(googleApiClient);
 
@@ -203,8 +207,6 @@ public class WeatherActivity extends AppCompatActivity implements GoogleApiClien
             double latitude = location.getLatitude();
             double longitude = location.getLongitude();
 
-            Log.d(TAG, latitude + ", " + longitude);
-
             try
             {
                 Geocoder geocoder = new Geocoder(WeatherActivity.this, Locale.getDefault());
@@ -212,14 +214,17 @@ public class WeatherActivity extends AppCompatActivity implements GoogleApiClien
             }
             catch (IOException e)
             {
-                Log.d(TAG, e.getMessage());
+                Toast.makeText(WeatherActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
         else
         {
-            Log.d(TAG, "(Couldn't get the location. Make sure location is enabled on the device)");
+            Toast.makeText(WeatherActivity.this,
+                    getResources().getString(R.string.message_action_activate_gps),
+                    Toast.LENGTH_LONG).show();
         }
     }
+
 
     protected synchronized void buildGoogleApiClient()
     {
@@ -228,6 +233,7 @@ public class WeatherActivity extends AppCompatActivity implements GoogleApiClien
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API).build();
     }
+
 
     private boolean checkPlayServices()
     {
@@ -281,7 +287,6 @@ public class WeatherActivity extends AppCompatActivity implements GoogleApiClien
     @Override
     public void onConnected(Bundle arg0)
     {
-        // Once connected with google api, get the location
         displayLocation();
     }
 
@@ -342,10 +347,10 @@ public class WeatherActivity extends AppCompatActivity implements GoogleApiClien
             // После выполнения - включаем
             GetMyWeatherButton.setEnabled(true);
             GetMyWeatherButton.setText(getResources().getString(R.string.label_widget_text_get_weather));
-            BindOfValues(result);
+            bindOfValues(result);
         }
 
-        private void BindOfValues(String values)
+        private void bindOfValues(String values)
         {
             Intent intent = new Intent(WeatherActivity.this,
                                        CurrentAndWeatherForecastActivity.class);
