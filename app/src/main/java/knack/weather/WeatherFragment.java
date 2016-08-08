@@ -165,8 +165,7 @@ public class WeatherFragment extends Fragment
                 return true;
             }
         });
-
-
+        
         LocationFloatingButton = (FloatingActionButton) view.findViewById(R.id.LocationFloatingButton);
         LocationFloatingButton.setOnClickListener(new View.OnClickListener()
         {
