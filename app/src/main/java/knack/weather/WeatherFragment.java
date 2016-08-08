@@ -1,34 +1,23 @@
 package knack.weather;
 
-import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Typeface;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,25 +28,17 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class WeatherFragment extends Fragment
-        implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener
 {
     EditText CityEditText;
     Button RefreshButton;
     Button GetMyWeatherButton;
     Snackbar snackbar;
-    FloatingActionButton LocationFloatingButton;
     FloatingActionButton MicFloatingButton;
 
     // Ответ от сервера с погодой
     String rawJsonString;
     // Буффер для SnackBar
     String bufferCityEditText;
-
-    // Для работы с местоположением
-    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 1000;
-    private Location location;
-    private GoogleApiClient googleApiClient;
-    public static final int NUMBER_OF_REQUEST = 1;
 
     // Для записи голоса
     private final int REQ_CODE_SPEECH_INPUT = 100;
@@ -68,12 +49,6 @@ public class WeatherFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_weather, container, false);
-
-        if (checkPlayServices())
-        {
-            buildGoogleApiClient();
-        }
-
 
         CityEditText = (EditText) view.findViewById(R.id.CityEditText);
         CityEditText.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),
@@ -165,40 +140,6 @@ public class WeatherFragment extends Fragment
                 return true;
             }
         });
-        
-        LocationFloatingButton = (FloatingActionButton) view.findViewById(R.id.LocationFloatingButton);
-        LocationFloatingButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                int permissionCheck = ContextCompat.checkSelfPermission(getActivity(),
-                        Manifest.permission.ACCESS_FINE_LOCATION);
-                Log.d(TAG, "permissionCheck: " + permissionCheck);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                {
-                    if (permissionCheck != PackageManager.PERMISSION_GRANTED)
-                    {
-                        if (ActivityCompat
-                                .shouldShowRequestPermissionRationale(getActivity(),
-                                        Manifest.permission.ACCESS_FINE_LOCATION))
-                        {
-                        }
-                        else
-                        {
-                            requestPermissions(new String[]
-                                            { Manifest.permission.ACCESS_FINE_LOCATION },
-                                    NUMBER_OF_REQUEST);
-                        }
-                    }
-                    else
-                    {
-                        displayLocation();
-                    }
-                }
-            }
-        });
 
         MicFloatingButton = (FloatingActionButton) view.findViewById(R.id.MicFloatingButton);
         MicFloatingButton.setOnClickListener(new View.OnClickListener()
@@ -253,104 +194,6 @@ public class WeatherFragment extends Fragment
         }
     }
 
-    private void displayLocation()
-    {
-        location = LocationServices.FusedLocationApi
-                .getLastLocation(googleApiClient);
-
-        if (location != null)
-        {
-            double latitude = location.getLatitude();
-            double longitude = location.getLongitude();
-
-            try
-            {
-                Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
-                CityEditText.setText(geocoder.getFromLocation(latitude, longitude, 1).get(0).getAddressLine(1));
-            }
-            catch (IOException e)
-            {
-                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }
-        else
-        {
-            Toast.makeText(getActivity(),
-                    getResources().getString(R.string.message_action_activate_gps),
-                    Toast.LENGTH_LONG).show();
-        }
-    }
-
-
-    protected synchronized void buildGoogleApiClient()
-    {
-        googleApiClient = new GoogleApiClient.Builder(getActivity())
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API).build();
-    }
-
-
-    private boolean checkPlayServices()
-    {
-        int resultCode = GooglePlayServicesUtil
-                .isGooglePlayServicesAvailable(getActivity());
-        if (resultCode != ConnectionResult.SUCCESS)
-        {
-            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode))
-            {
-                GooglePlayServicesUtil.getErrorDialog(resultCode, getActivity(),
-                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
-            }
-            else
-            {
-
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "This device is not supported.", Toast.LENGTH_LONG)
-                        .show();
-                getActivity().finish();
-            }
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public void onStart()
-    {
-        super.onStart();
-        if (googleApiClient != null)
-        {
-            googleApiClient.connect();
-        }
-    }
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-
-        checkPlayServices();
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult result)
-    {
-        Log.d(TAG, "Connection failed: ConnectionResult.getErrorCode() = "
-                + result.getErrorCode());
-    }
-
-    @Override
-    public void onConnected(Bundle arg0)
-    {
-        displayLocation();
-    }
-
-    @Override
-    public void onConnectionSuspended(int arg0)
-    {
-        googleApiClient.connect();
-    }
 
     // Класс для GET-запроса и получения ответа
     @TargetApi(19)
