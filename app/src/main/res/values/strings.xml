@@ -122,7 +122,9 @@
     <!-- Уведомления -->
     <string name="message.notify.city_is_remove">The city is removed</string>
     <string name="message.action.undo">UNDO</string>
-    <string name="message.action.activate_gps">Activate geolocation!</string>
+    <string name="message.action.activate_gps">
+        Couldn\'t get the location. Make sure location is enabled on the device!
+    </string>
     <string name="message.notify.permission">
         Activate geolocation for searching your city
     </string>
