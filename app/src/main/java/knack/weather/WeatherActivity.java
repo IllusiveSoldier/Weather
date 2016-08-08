@@ -2,6 +2,7 @@ package knack.weather;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,6 +12,7 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -29,6 +31,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import okhttp3.OkHttpClient;
@@ -43,6 +46,7 @@ public class WeatherActivity extends AppCompatActivity
     Button GetMyWeatherButton;
     Snackbar snackbar;
     FloatingActionButton LocationFloatingButton;
+    FloatingActionButton MicFloatingButton;
 
     // Ответ от сервера с погодой
     String rawJsonString;
@@ -54,6 +58,9 @@ public class WeatherActivity extends AppCompatActivity
     private Location location;
     private GoogleApiClient googleApiClient;
     public static final int NUMBER_OF_REQUEST = 1;
+
+    // Для записи голоса
+    private final int REQ_CODE_SPEECH_INPUT = 100;
 
     // Флаг для отладки
     final String TAG = "TEST";
@@ -195,6 +202,56 @@ public class WeatherActivity extends AppCompatActivity
                 }
             }
         });
+
+        MicFloatingButton = (FloatingActionButton) findViewById(R.id.MicFloatingButton);
+        MicFloatingButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                promptSpeechInput();
+            }
+        });
+    }
+
+    private void promptSpeechInput()
+    {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.label_explain_say_something));
+        try
+        {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        }
+        catch (ActivityNotFoundException a)
+        {
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.message_error_mic_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode)
+        {
+            case REQ_CODE_SPEECH_INPUT:
+            {
+                if (resultCode == RESULT_OK && null != data)
+                {
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    CityEditText.setText(result.get(0));
+                }
+                break;
+            }
+        }
     }
 
     private void displayLocation()

@@ -88,6 +88,7 @@
     <string name="label.explain.location">Location</string>
     <string name="label.explain.wind">Wind</string>
     <string name="label.explain.atmosphere">Atmosphere</string>
+    <string name="label.explain.say_something">Tell me, how is your city?</string>
 
     <!-- Дни недели -->
     <string name="label.day_of_the_week.monday">Monday</string>
@@ -114,6 +115,9 @@
     </string>
     <string name="message.error.error">Error</string>
     <string name="message.error.message">Message</string>
+     <string name="message.error.mic_not_supported">
+       This function is not supported on your device!
+    </string>
 
     <!-- Уведомления -->
     <string name="message.notify.city_is_remove">The city is removed</string>
