@@ -31,7 +31,7 @@ public class WeatherOnAnotherDaysFragment extends Fragment
 
         Bundle bundle = getArguments();
         ParseWeather parseWeather = new ParseWeather(bundle.getString("jsonString"));
-        parseWeather.Parse();
+        parseWeather.parse();
         forecasts = parseWeather.forecast.getArrayOfForcasts();
 
         if (parseWeather.isCheck())

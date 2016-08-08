@@ -11,7 +11,7 @@ public class FormatOutput
         context = c;
     }
 
-    public String GetDirectionOfWind(int direction)
+    public String getDirectionOfWind(int direction)
     {
         if (direction >= 0 && direction < 15)
         {
@@ -52,7 +52,7 @@ public class FormatOutput
         else return context.getResources().getString(R.string.label_direction_error);
     }
 
-    public String GetDay(String d)
+    public String getDay(String d)
     {
         String day = "";
 
@@ -84,7 +84,7 @@ public class FormatOutput
         return day;
     }
 
-    public String GetCondition(int code)
+    public String getCondition(int code)
     {
         String condition = "";
 
@@ -239,115 +239,115 @@ public class FormatOutput
         return condition;
     }
 
-    public String GetCountyLabel()
+    public String getCountyLabel()
     {
         return context.getResources().getString(R.string.label_explain_country);
     }
 
-    public String GetRegionLabel()
+    public String getRegionLabel()
     {
         return context.getResources().getString(R.string.label_explain_region);
     }
 
-    public String GetCityLabel()
+    public String getCityLabel()
     {
         return context.getResources().getString(R.string.label_explain_city);
     }
 
-    public String GetChillLabel()
+    public String getChillLabel()
     {
         return context.getResources().getString(R.string.label_explain_temp_of_wind);
     }
 
-    public String GetDirectLabel()
+    public String getDirectLabel()
     {
         return context.getResources().getString(R.string.label_explain_direction_of_wind);
     }
 
-    public String GetSpeedOfWindLabel()
+    public String getSpeedOfWindLabel()
     {
         return context.getResources().getString(R.string.label_explain_speed_of_wind);
     }
 
-    public String GetHumidityLabel()
+    public String getHumidityLabel()
     {
         return context.getResources().getString(R.string.label_explain_humidity);
     }
 
-    public String GetPressureLabel()
+    public String getPressureLabel()
     {
         return context.getResources().getString(R.string.label_explain_pressure);
     }
 
-    public String GetVisibilityLabel()
+    public String getVisibilityLabel()
     {
         return context.getResources().getString(R.string.label_explain_visibility);
     }
 
-    public String GetKmLabel()
+    public String getKmLabel()
     {
         return context.getResources().getString(R.string.label_units_km);
     }
 
-    public String GetMmHgLabel()
+    public String getMmHgLabel()
     {
         return context.getResources().getString(R.string.label_units_mm_Hg);
     }
 
-    public String GetMetersInSecondLabel()
+    public String getMetersInSecondLabel()
     {
         return context.getResources().getString(R.string.label_units_meters_in_second);
     }
 
-    public String GetTitleLabel()
+    public String getTitleLabel()
     {
         return context.getResources().getString(R.string.label_explain_title);
     }
 
-    public String GetDateLabel()
+    public String getDateLabel()
     {
         return context.getResources().getString(R.string.label_explain_date);
     }
 
-    public String GetDayLabel()
+    public String getDayLabel()
     {
         return context.getResources().getString(R.string.label_explain_day);
     }
 
-    public String GetMaxTempLabel()
+    public String getMaxTempLabel()
     {
         return context.getResources().getString(R.string.label_explain_max);
     }
 
-    public String GetMinTempLabel()
+    public String getMinTempLabel()
     {
         return context.getResources().getString(R.string.label_explain_min);
     }
 
-    public String GetConditionLabel()
+    public String getConditionLabel()
     {
         return context.getResources().getString(R.string.label_explain_condition);
     }
 
-    public String GetMessageWithError()
+    public String getMessageWithError()
     {
         return context.getResources()
                 .getString(R.string.message_error_error_download_weather_from_current_city);
     }
 
-    public String GetLocationLabel()
+    public String getLocationLabel()
     {
         return context.getResources()
                 .getString(R.string.label_explain_location);
     }
 
-    public String GetWindLabel()
+    public String getWindLabel()
     {
         return context.getResources()
                 .getString(R.string.label_explain_wind);
     }
 
-    public String GetAtmosphereLabel()
+    public String getAtmosphereLabel()
     {
         return context.getResources()
                 .getString(R.string.label_explain_atmosphere);

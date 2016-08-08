@@ -3,7 +3,6 @@ package knack.weather;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,14 +44,14 @@ public class CurrentWeatherFragment extends Fragment
         Bundle bundle = getArguments();
         FormatOutput formatOutput = new FormatOutput(getActivity());
         ParseWeather parseWeather = new ParseWeather(bundle.getString("jsonString"));
-        parseWeather.Parse();
+        parseWeather.parse();
         if (parseWeather.isCheck())
         {
-            SetValues(parseWeather, formatOutput);
+            setValuesInCurrentWeather(parseWeather, formatOutput);
         }
         else
         {
-            InfoAboutWeather.setText(formatOutput.GetMessageWithError());
+            InfoAboutWeather.setText(formatOutput.getMessageWithError());
         }
 
         return view;
@@ -64,42 +63,42 @@ public class CurrentWeatherFragment extends Fragment
         super.onSaveInstanceState(savedInstanceState);
     }
 
-    public void SetValues(ParseWeather parseWeather, FormatOutput formatOutput)
+    public void setValuesInCurrentWeather(ParseWeather parseWeather, FormatOutput formatOutput)
     {
-        String s = formatOutput.GetLocationLabel() + "\n" +
-                formatOutput.GetCountyLabel() + " " +
-                parseWeather.location.GetCountry() + "\n" +
-                formatOutput.GetRegionLabel() + " " +
-                parseWeather.location.GetRegion() + "\n" +
-                formatOutput.GetCityLabel() + " " +
-                parseWeather.location.GetCity() + "\n\n" +
-                formatOutput.GetWindLabel() + "\n" +
-                formatOutput.GetChillLabel() + " " +
+        String s = formatOutput.getLocationLabel() + "\n" +
+                formatOutput.getCountyLabel() + " " +
+                parseWeather.location.getCountry() + "\n" +
+                formatOutput.getRegionLabel() + " " +
+                parseWeather.location.getRegion() + "\n" +
+                formatOutput.getCityLabel() + " " +
+                parseWeather.location.getCity() + "\n\n" +
+                formatOutput.getWindLabel() + "\n" +
+                formatOutput.getChillLabel() + " " +
                 String.format(Locale.ENGLISH,
-                        "%.1f", parseWeather.wind.GetChillInCelsius()) +
+                        "%.1f", parseWeather.wind.getChillInCelsius()) +
                 " \u2103" + "\n" +
-                formatOutput.GetDirectLabel() + " " +
-                formatOutput.GetDirectionOfWind(
-                        parseWeather.wind.GetDirection()) + "\n" +
-                formatOutput.GetSpeedOfWindLabel() + " " +
+                formatOutput.getDirectLabel() + " " +
+                formatOutput.getDirectionOfWind(
+                        parseWeather.wind.getDirection()) + "\n" +
+                formatOutput.getSpeedOfWindLabel() + " " +
                 String.format(Locale.ENGLISH,
-                        "%.1f", parseWeather.wind.GetSpeedInMetersInSecond()) + " " +
-                formatOutput.GetMetersInSecondLabel() + "\n\n" +
-                formatOutput.GetAtmosphereLabel() + "\n" +
-                formatOutput.GetHumidityLabel() + " " +
-                parseWeather.atmosphere.GetHumidity() + "%" + "\n" +
-                formatOutput.GetPressureLabel() + " " +
-                (int)parseWeather.atmosphere.GetPressureInMm() + " " +
-                formatOutput.GetMmHgLabel() + "\n" +
-                formatOutput.GetVisibilityLabel() + " " +
-                (int)parseWeather.atmosphere.GetVisibilityInKilometers() + " " +
-                formatOutput.GetKmLabel();
+                        "%.1f", parseWeather.wind.getSpeedInMetersInSecond()) + " " +
+                formatOutput.getMetersInSecondLabel() + "\n\n" +
+                formatOutput.getAtmosphereLabel() + "\n" +
+                formatOutput.getHumidityLabel() + " " +
+                parseWeather.atmosphere.getHumidity() + "%" + "\n" +
+                formatOutput.getPressureLabel() + " " +
+                (int)parseWeather.atmosphere.getPressureInMm() + " " +
+                formatOutput.getMmHgLabel() + "\n" +
+                formatOutput.getVisibilityLabel() + " " +
+                (int)parseWeather.atmosphere.getVisibilityInKilometers() + " " +
+                formatOutput.getKmLabel();
 
 
         InfoAboutWeather.setText(s);
 
         Picasso.with(getActivity())
-                .load(parseWeather.image.GetUriImage())
+                .load(parseWeather.image.getUrl())
                 .placeholder(R.mipmap.ic_sync_black_24dp)
                 .error(R.mipmap.ic_cloud_off_black_24dp)
                 .into(ImageYahooView);

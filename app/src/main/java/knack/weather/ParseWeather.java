@@ -80,21 +80,6 @@ public class ParseWeather
         {
             return getCountry() + ", " + getRegion() + ", " + getCity();
         }
-
-        public String GetCity()
-        {
-            return getCity();
-        }
-
-        public String GetRegion()
-        {
-            return getRegion();
-        }
-
-        public String GetCountry()
-        {
-            return getCountry();
-        }
     }
 
     public class Wind
@@ -139,34 +124,29 @@ public class ParseWeather
                     "Скорость ветра: " + getSpeed();
         }
 
-        public int GetChillInFahrenheit()
+        public int getChillInFahrenheit()
         {
             return getChill();
         }
 
-        public double GetChillInCelsius()
+        public double getChillInCelsius()
         {
             return (getChill() - 32) / 1.8000;
         }
 
-        public int GetDirection()
-        {
-            return getDirection();
-        }
-
-        public int GetSpeedInMph()
+        public int getSpeedInMph()
         {
             return getSpeed();
         }
 
-        public double GetSpeedInKmh()
+        public double getSpeedInKmh()
         {
             return getSpeed() * 1.609344;
         }
 
-        public double GetSpeedInMetersInSecond()
+        public double getSpeedInMetersInSecond()
         {
-            return GetSpeedInKmh() * 0.2777777777778;
+            return getSpeedInKmh() * 0.2777777777778;
         }
 
     }
@@ -214,27 +194,23 @@ public class ParseWeather
                  ", Видимость: " + getVisibility();
         }
 
-        public int GetHumidity()
-        {
-            return getHumidity();
-        }
         
-        public double GetPressureInInch()
+        public double getPressureInInch()
         {
             return getPressure();
         }
 
-        public double GetPressureInMm()
+        public double getPressureInMm()
         {
             return getPressure() * 0.75006375541921;
         }
 
-        public double GetVisibilityInMiles()
+        public double getVisibilityInMiles()
         {
             return getVisibility();
         }
 
-        public double GetVisibilityInKilometers()
+        public double getVisibilityInKilometers()
         {
             return getVisibility() * 1.609344;
         }
@@ -274,21 +250,6 @@ public class ParseWeather
         public void setWidth(int width)
         {
             this.width = width;
-        }
-
-        public String GetUriImage()
-        {
-            return getUrl();
-        }
-
-        public int GetSizeImageOfX()
-        {
-            return getWidth();
-        }
-
-        public int GetSizeImageOfY()
-        {
-            return getHeight();
         }
     }
 
@@ -386,7 +347,7 @@ public class ParseWeather
         }
     }
 
-    public void Parse()
+    public void parse()
     {
         try
         {

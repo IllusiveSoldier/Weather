@@ -88,6 +88,7 @@
     <string name="label.explain.location">Местоположение</string>
     <string name="label.explain.wind">Ветер</string>
     <string name="label.explain.atmosphere">Атмосфера</string>
+    <string name="label.explain.say_something">Скажи, как называется город?</string>
 
     <!-- Дни недели -->
     <string name="label.day_of_the_week.monday">Понедельник</string>
@@ -114,10 +115,19 @@
     </string>
     <string name="message.error.error">Ошибка</string>
     <string name="message.error.message">Сообщение</string>
+    <string name="message.error.mic_not_supported">
+        Данная функция не поддерживается на вашем устройстве!
+    </string>
 
     <!-- Уведомления -->
     <string name="message.notify.city_is_remove">Город удалён</string>
     <string name="message.action.undo">ОТМЕНИТЬ</string>
+    <string name="message.action.activate_gps">
+        Не могу получить ваше местоположение, возможно у вас не активирована геолокация!
+    </string>
+    <string name="message.notify.permission">
+        Местоположение небоходимо для поиска города, в котором вы находитесь
+    </string>
 
     <!-- Другое -->
     <string name="label.application.app_name">Weather</string>

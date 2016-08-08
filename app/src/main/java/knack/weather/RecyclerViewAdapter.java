@@ -62,19 +62,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         FormatOutput formatOutput = new FormatOutput(context);
         String s =
-                formatOutput.GetTitleLabel() + " " + forecasts[i].getTitle() + "\n" +
-                formatOutput.GetDateLabel() + " " + forecasts[i].getDate() + "\n" +
-                formatOutput.GetDayLabel() + " " +
-                        formatOutput.GetDay(forecasts[i].getDay()) + "\n" +
-                formatOutput.GetMaxTempLabel() + " " +
+                formatOutput.getTitleLabel() + " " + forecasts[i].getTitle() + "\n" +
+                formatOutput.getDateLabel() + " " + forecasts[i].getDate() + "\n" +
+                formatOutput.getDayLabel() + " " +
+                        formatOutput.getDay(forecasts[i].getDay()) + "\n" +
+                formatOutput.getMaxTempLabel() + " " +
                         String.format(Locale.ENGLISH,
                                 "%.1f",
                                 forecasts[i].getHighInCelsius()) + "\u2103" + "\n" +
-                formatOutput.GetMinTempLabel() + " " +
+                formatOutput.getMinTempLabel() + " " +
                         String.format(Locale.ENGLISH,
                                 "%.1f", forecasts[i].getLowInCelsius()) + "\u2103" + "\n" +
-                formatOutput.GetConditionLabel() + " " +
-                        formatOutput.GetCondition(forecasts[i].getCode());
+                formatOutput.getConditionLabel() + " " +
+                        formatOutput.getCondition(forecasts[i].getCode());
 
         weatherViewHolder.WeatherInDay.setText(s);
     }
